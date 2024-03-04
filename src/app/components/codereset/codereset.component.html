@@ -1,0 +1,7 @@
+<h2>Reset Your Account Password</h2>
+<form [formGroup]="getCode" class="w-100 my-3" (ngSubmit)="handleForm(codeID.value)">
+    <label for="code">Enter sent Code</label>
+    <input type="text" formControlName="code" id="code" class="form-control" #codeID >
+    
+    <button class="btn btn-outline-success my-3" >Verify</button>
+</form>

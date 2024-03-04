@@ -1,0 +1,18 @@
+<section *ngIf="categories.length > 0 else loading" class="mt-5">
+    <div class="row g-4">
+        <div class="col-md-4 my-4 " *ngFor="let category of categories">
+            <div class="text-center box border rounded cursor-pointer pb-3">
+            <img class="w-100 " [src]="category.image" alt="" height="300px" >
+            <h3>{{category.name}}</h3>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<ng-template #loading  >
+    <div class=" mx-0 vh-100 w-100 loading-box overflow-hidden d-flex justify-content-center align-items-center position-absolute start-0  ">
+        <span class="loader"></span>
+    </div>
+</ng-template>
+

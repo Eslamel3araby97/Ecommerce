@@ -1,0 +1,21 @@
+<section class=" p-5 ">
+    <form [formGroup]="checkOut" (ngSubmit)="handleform()">
+        <label class="mt-4 fs-6 " for="details">Details</label>
+        <textarea class="form-control p-2 " id="details" formControlName="details"></textarea>
+
+        <label class="mt-4 fs-6  " for="phone">Phone</label>
+        <input class="form-control p-2 " type="tel" id="phone" formControlName="phone" #phoneID >
+        <div class="alert alert-danger" *ngIf="phone?.errors && (phone?.touched || phoneID.value.length > 0)">
+            <p *ngIf="phone?.getError('required')">phone is Required</p>
+            <p *ngIf="phone?.getError('pattern')">type a valid Phone Number</p>
+        </div>
+        <label class="mt-4 fs-6  " for="city">City</label>
+        <input class="form-control p-2 " type="tel" id="city" formControlName="city" #cityID>
+        <div class="alert alert-danger" *ngIf="city?.errors && (city?.touched || cityID.value.length > 0)">
+            <p *ngIf="city?.getError('required')">city is Required</p>
+        </div>
+        
+        <button class="btn btn-outline-primary mt-5 w-100"> Pay Now</button>
+    </form>
+
+</section>

@@ -1,0 +1,16 @@
+.nav-link{
+    font-size: 15px !important;
+}
+
+.carticon{
+    position: relative;
+}
+
+.carticon .count{
+   padding: 2px 5px  ;
+    background-color: rgb(79, 167, 79);
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 10px;
+}

@@ -1,0 +1,57 @@
+<section class="p-4 bg-main-light rounded my-3 w-75 mx-auto">
+    <h1>Register Now</h1>
+    <form [formGroup]="registerFrom" (ngSubmit)="handleform()">
+
+        <div class="mb-2 ">
+         <label for="name">Name</label>
+         <input type="text" formControlName="name" id="name" class="form-control" #nameID>
+         <div class="alert alert-danger" *ngIf="name?.errors && (name?.touched || nameID.value.length > 0)">
+            <p *ngIf="registerFrom.get('name')?.getError('required')">Name is Required</p>
+            <p *ngIf="registerFrom.get('name')?.getError('minlength')">Min Length is 3 </p>
+            <p *ngIf="registerFrom.get('name')?.getError('maxlength')">Max Length is 20</p>
+         </div>
+         
+        </div>
+
+        <div class="mb-2 ">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" id="email" class="form-control" #emailID>
+            <div class="alert alert-danger" *ngIf="email?.errors && (email?.touched || emailID.value.length > 0)">
+                <p *ngIf="email?.getError('required')">Email is Required</p>
+                <p *ngIf="email?.getError('email')">type a valid Email</p>
+            </div>
+           </div>
+
+           <div class="mb-2 ">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" id="password" class="form-control" #passwordID>
+            <div class="alert alert-danger" *ngIf="password?.errors && (password?.touched || passwordID.value.length > 0)">
+                <p *ngIf="password?.getError('required')">password is Required</p>
+                <p *ngIf="password?.getError('pattern')">type a Strong Password</p>
+            </div>
+           </div>
+
+           <div class="mb-2 ">
+            <label for="rePassword">rePassword</label>
+            <input type="password" formControlName="rePassword" id="rePassword" class="form-control" #rePasswordID>
+            <div class="alert alert-danger" *ngIf="rePassword?.errors && rePassword?.touched">
+                <p *ngIf="rePassword?.getError('required')">repassword is Required</p>
+                <p *ngIf="rePassword?.getError('notMatch')">Password don't match</p>
+            </div>
+           </div>
+
+           <div class="mb-2 ">
+            <label for="phone">Phone</label>
+            <input type="tel" formControlName="phone" id="phone" class="form-control" #phoneID>
+            <div class="alert alert-danger" *ngIf="phone?.errors && (phone?.touched || phoneID.value.length > 0)">
+                <p *ngIf="phone?.getError('required')">phone is Required</p>
+                <p *ngIf="phone?.getError('pattern')">type a valid Phone Number</p>
+            </div>
+           </div>
+
+           <p class="mx-auto text-danger d-block" *ngIf="errorMsg">{{errorMsg}}</p>
+           
+           <button class="btn-main ms-auto d-block mt-3" >
+             <i class="fa fa-spin fa-spinner" *ngIf="isloading"></i> Sign Up</button>
+    </form>
+</section>

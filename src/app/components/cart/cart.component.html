@@ -1,0 +1,47 @@
+<section class="mt-4 bg-main-light p-5 rounded" *ngIf=" loaded else loading" >  
+    <div class="header d-flex justify-content-between">
+        
+
+        <div class="left">
+            <h2 class="fw-bolder">Cart Shop</h2>
+            <h5 class="fw-bolder mt-4">total Price: <span class="text-success">{{cartDetails.totalCartPrice}} EGP</span></h5>
+        </div>
+        <div class="right">
+            <button class="btn btn-primary p-2 d-block ms-auto" [routerLink]="['/payment' ,cartDetails._id ]">Check Out</button>
+            <p class="fw-bolder mt-4 ">total Numbers Of Items: <span class="text-success">{{cartItems}}</span></p>
+        </div>
+    </div>  
+    
+
+    <div class="row mb-3 p-3 border-bottom" *ngFor="let item of cartDetails.products">
+        <div class="col-md-2">
+            <img [src]="item.product.imageCover" alt="" class="w-100">
+        </div>
+        <div class="col-md-10 d-flex justify-content-between">
+            <div class="my-auto">
+                <h5>{{item.product.title}}</h5>
+                <p>{{item.price}} EGP</p>
+                <button class="border-0"(click)="delete(item.product._id)">
+                    <i class="fa-solid fa-trash me-1" style="color: #ac1b1b;"></i><span>Remove Item</span>
+                </button>
+                    
+                
+            </div>
+            <div class="my-auto text-center d-flex">
+                <button class="btn border-success border d-inline-block" (click)="changeCount(item.product._id,item.count +1)">+</button>
+                <p class="mx-3 my-auto">{{item.count}}</p>
+                <button class="btn border-success border d-inline-block"(click)="changeCount(item.product._id,item.count -1)">-</button>
+            </div>
+
+        </div>
+    </div>        
+
+    <button class="btn btn-outline-success mx-auto d-block" (click)="clearCart()">Clear Cart</button>
+
+</section>
+<ng-template #loading  >
+    <div class=" mx-0 vh-100 w-100 loading-box overflow-hidden d-flex justify-content-center align-items-center position-absolute start-0  ">
+        <span class="loader"></span>
+    </div>
+</ng-template>
+

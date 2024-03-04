@@ -1,0 +1,29 @@
+<section class="mt-5" *ngIf="wishlist.length > 0 else loading">
+    <div class="row my-4 pb-3  border-bottom" *ngFor="let item of wishlist">
+        <div class="col-md-2">
+           <img [src]="item.imageCover" alt="" class="w-75">
+        </div>
+        <div class="col-md-10 d-flex align-items-center  justify-content-between  ">
+            <div class="d-flex flex-column align-items-baseline ">
+                <h6 class="fw-bold">{{item.title}}</h6>
+                <span class="d-block my-2 text-success">{{item.price}} EGP</span>
+
+                <button class="border-0 bg-transparent "(click)="delete(item._id)">
+                    <i class="fa-solid fa-trash me-1" style="color: #ac1b1b;"></i><span>Remove Item</span>
+                </button>
+            </div>
+
+            <div>
+                        <button class="btn btn-outline-success ms-auto d-flex align-items-center mt-3" (click)="addToCart(item._id)">Add Product</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<ng-template #loading  >
+    <div class=" mx-0 vh-100 w-100 loading-box overflow-hidden d-flex justify-content-center align-items-center position-absolute start-0  ">
+        <span class="loader"></span>
+    </div>
+</ng-template>
+

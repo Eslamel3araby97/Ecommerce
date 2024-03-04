@@ -1,0 +1,36 @@
+<section class="p-4 bg-main-light rounded mt-4 w-75 mx-auto">
+    <h1>Login Now</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="handleform()">
+
+        <div class="mb-2 ">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" id="email" class="form-control">
+            <div class="alert alert-danger" *ngIf="email?.errors && email?.dirty">
+                <p *ngIf="email?.getError('required')">Email is Required</p>
+                <p *ngIf="email?.getError('email')">type a valid Email</p>
+            </div>
+           </div>
+
+           <div class="mb-2 ">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" id="password" class="form-control">
+            <div class="alert alert-danger" *ngIf="password?.errors && password?.dirty">
+                <p *ngIf="password?.getError('required')">password is Required</p>
+                <p *ngIf="password?.getError('pattern')">type a Strong Password</p>
+            </div>
+           </div>
+
+          
+
+           <p class="mx-auto text-danger d-block" *ngIf="errorMsg">{{errorMsg}}</p>
+           <div class="d-flex justify-content-between align-items-center">
+            <h5 class="cursor-pointer router" routerLink="/forgetpassword" >Forget Password ?</h5>
+            <button class="btn-main d-block mt-3" [disabled]="loginForm.invalid">
+                <i class="fa fa-spin fa-spinner" *ngIf="isloading"></i>LogIn</button>
+                
+           </div>
+          
+    </form>
+
+    
+</section>
